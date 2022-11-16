@@ -17,36 +17,39 @@ export const Routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('https://st-webcourse-sarver.vercel.app/news')
             },
             {
-                path: '/courses/:id',
+                path: '/courses',
                 element: <Courses></Courses>
+
             },
             {
-                path: '/blog/:id',
+                path: '/blog',
                 element: <Blog></Blog>
             },
             {
-                path: '/faq/:id',
+                path: '/faq',
                 element: <Faq></Faq>
             },
             {
-                path: '/login/:id',
+                path: '/login',
                 element: <Login></Login>
             },
             {
-                path: '/register/id',
+                path: '/register',
                 element: <Register></Register>
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loder: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://st-webcourse-sarver.vercel.app/category/${params.id}`)
             },
             {
                 path: '/news/:id',
-                element: <News></News>
+                element: <News></News>,
+                loader: ({ params }) => fetch(`https://st-webcourse-sarver.vercel.app/news/${params.id}`)
             }
 
         ]
